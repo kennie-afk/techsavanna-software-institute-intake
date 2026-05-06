@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSI Admission Form</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root{
+  --primary:#7c3aed; 
+  --secondary:#4f46e5; 
+  --success:#22c55e; 
+  --danger:#ef4444;
+  --border:rgba(0,0,0,0.12);
+  --tsi-purple:#7c3aed; 
+  --tsi-gold:#ffd700;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:white;
+  padding:40px 15px;
+}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:50px;
+  border-radius:28px;
+  backdrop-filter:blur(25px);
+  border:1px solid var(--border);
+  box-shadow:0 30px 70px rgba(0,0,0,0.6);
+  background: white;
+}
+
+h1{
+  font-size:2.6rem;
+  text-align:center;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.tsi-title-main{color:var(--tsi-purple);}
+.tsi-title-sub{color:var(--tsi-gold);}
+.tsi-title-end{color:var(--danger);}
+
+.description{
+  text-align:center;
+  margin-bottom:40px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:20px;
+  color:#333;
+}
+
+section{margin-bottom:40px;}
+
+h3{
+  font-size:0.85rem;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+
+.form-group{margin-bottom:20px;}
+
+label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:0.85rem;
+  margin-bottom:8px;
+  font-weight:600;
+  color:#1f2937;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,0.45);
+  color:white;
+  font-size:1rem;
+}
+
+input:focus,select:focus,textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+}
+
+.error-message{
+  font-size:0.75rem;
+  color:var(--danger);
+  margin-top:5px;
+}
+
+button{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:16px;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:white;
+  cursor:pointer;
+  font-size:1.05rem;
+}
+
+.loader{
+  display:none;
+  border:3px solid #fff;
+  border-top:3px solid transparent;
+  border-radius:50%;
+  width:22px;
+  height:22px;
+  margin:auto;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{100%{transform:rotate(360deg);}}
+
+#success{
+  display:none;
+  text-align:center;
+  padding:20px 0;
+}
+
+/* Premium Success Screen */
+.success-icon-container {
+  margin-bottom: 25px;
+}
+
+.info-box {
+  margin-top: 30px; 
+  padding: 25px; 
+  border-radius: 16px;
+  background: #f8fafc; 
+  border: 1px solid #e2e8f0; 
+  text-align: left;
+}
+
+.info-row { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 14px; 
+  color: #475569;
+  font-size: 1rem;
+}
+
+.info-row i {
+  width: 22px;
+  height: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="formBody">
+
+<h1>
+  <span class="tsi-title-main">Techsavanna</span> 
+  <span class="tsi-title-sub">Software</span> 
+  <span class="tsi-title-end">Institute</span>
+</h1>
+
+<p class="description">Complete the admission form below.</p>
+
+<form id="mainForm">
+
+<section>
+<h3>Student Information</h3>
+
+<div class="form-group">
+<label><i data-lucide="user"></i> Full Name</label>
+<input type="text" name="name">
+<span class="error-message" id="nameError"></span>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="credit-card"></i> ID / Passport</label>
+<input type="text" name="id">
+<span class="error-message" id="idError"></span>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="users"></i> Gender</label>
+<select name="gender">
+<option value="">Select</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+<span class="error-message" id="genderError"></span>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="calendar"></i> Date of Birth</label>
+<input type="date" name="dob">
+<span class="error-message" id="dobError"></span>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="phone"></i> Phone</label>
+<input type="text" name="phone">
+<span class="error-message" id="phoneError"></span>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="mail"></i> Email</label>
+<input type="email" name="email">
+<span class="error-message" id="emailError"></span>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="activity"></i> Status</label>
+<select name="q2" id="employmentStatus">
+<option value="">Select Status</option>
+<option value="Student">Student</option>
+<option value="Employed">Working</option>
+<option value="Not Working">Not Working</option>
+</select>
+<span class="error-message" id="q2Error"></span>
+</div>
+</section>
+
+<section>
+<h3>Program Details</h3>
+
+<div class="form-group">
+<label><i data-lucide="book-open"></i> Program</label>
+<select name="program">
+<option value="">Select Program</option>
+<option>Software Engineering</option>
+<option>Software Development</option>
+<option>Web Development</option>
+<option>Cybersecurity</option>
+<option>Data Science</option>
+<option>Artificial Intelligence</option>
+<option>Machine Learning</option>
+<option>UI/UX Design</option>
+</select>
+<span class="error-message" id="programError"></span>
+</div>
+
+<div class="form-group">
+  <label><i data-lucide="layers"></i> Intake</label>
+  <select name="intake">
+    <option value="">Select Intake</option>
+    <option value="May Intake">May Intake</option>
+    <option value="August Intake">August Intake</option>
+    <option value="November Intake">November Intake</option>
+  </select>
+  <span class="error-message" id="intakeError"></span>
+</div>
+</section>
+
+<section id="workSection" style="display:none;">
+<h3>Work & Contact</h3>
+
+<div class="form-group">
+<label><i data-lucide="briefcase"></i> Place of Work</label>
+<input type="text" name="work">
+</div>
+
+<div class="form-group">
+<label><i data-lucide="badge"></i> Title</label>
+<input type="text" name="title">
+</div>
+
+<div class="form-group">
+<label><i data-lucide="user-plus"></i> Contact Person</label>
+<input type="text" name="contact-name">
+</div>
+
+<div class="form-group">
+<label><i data-lucide="phone-call"></i> Contact Phone</label>
+<input type="text" name="contact-phone">
+</div>
+
+<div class="form-group">
+<label><i data-lucide="mail"></i> Contact Email</label>
+<input type="email" name="contact-email">
+</div>
+</section>
+
+<section>
+<h3>Additional Info</h3>
+
+<div class="form-group">
+<label><i data-lucide="file-text"></i> Profession & Experience</label>
+<textarea name="q1"></textarea>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="search"></i> Referral Source</label>
+<select name="q3">
+<option value="">Select</option>
+<option>Website</option>
+<option>Google</option>
+<option>Referral</option>
+</select>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="trending-up"></i> Career Support</label>
+<textarea name="q4"></textarea>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="target"></i> Future Training</label>
+<textarea name="q5"></textarea>
+</div>
+
+<div class="form-group">
+<label><i data-lucide="message-circle"></i> Comments</label>
+<textarea name="q6"></textarea>
+</div>
+
+</section>
+
+<button type="submit">
+  <span id="btnText">Submit Application</span>
+  <div class="loader" id="loader"></div>
+</button>
+
+</form>
+
+</div>
+
+<!-- Premium Success Screen -->
+<div id="success">
+  <div class="success-icon-container">
+    <i data-lucide="check-circle" style="color: var(--success); width: 80px; height: 80px; stroke-width: 1.5;"></i>
+  </div>
+  <h1 style="margin-top: 0;">Application Successful</h1>
+  <p>Thank you for choosing Techsavanna Software Institute.</p>
+  <div class="info-box">
+    <div class="info-row"><i data-lucide="mail"></i> <span>Confirmation email will be sent shortly</span></div>
+    <div class="info-row"><i data-lucide="message-circle"></i> <span>Our team will contact you via WhatsApp</span></div>
+    <div class="info-row"><i data-lucide="check-square"></i> <span>Onboarding details will follow</span></div>
+  </div>
+  <button onclick="location.reload()" style="margin-top:30px; width:auto; padding:12px 50px;">Return to Form</button>
+</div>
+
+</div>
+
+<script>
+lucide.createIcons();
+
+const form = document.getElementById('mainForm');
+const loader = document.getElementById('loader');
+const btnText = document.getElementById('btnText');
+const employmentSelect = document.getElementById("employmentStatus");
+const workSection = document.getElementById("workSection");
+
+employmentSelect.addEventListener("change", function(){
+  if(this.value === "Employed"){
+    workSection.style.display = "block";
+  } else {
+    workSection.style.display = "none";
+  }
+});
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  let valid = true;
+  document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
+
+  const required = ["name","id","gender","dob","phone","email","program","intake","q2"];
+  required.forEach(field => {
+    if(!form[field].value){
+      const errorEl = document.getElementById(field + "Error");
+      if(errorEl) errorEl.textContent = "Required";
+      valid = false;
+    }
+  });
+
+  if(!valid) return;
+
+  loader.style.display = 'inline-block';
+  btnText.style.display = 'none';
+
+  try{
+    const res = await fetch("https://script.google.com/macros/s/AKfycbzrZQLOPagJDGbWXb9_8qKMLrEw-47LxedAhTYBU-XRMyG0w2BzM_CTkYtC0BmF8DBoAQ/exec",{
+      method:"POST",
+      body:new URLSearchParams(new FormData(form))
+    });
+
+    const text = await res.text();
+
+    if(text.includes("success")){
+      document.getElementById('formBody').style.display='none';
+      document.getElementById('success').style.display='block';
+      lucide.createIcons();
+    } else {
+      alert("Submission error");
+    }
+  } catch(e){
+    alert("Network error");
+  }
+
+  loader.style.display='none';
+  btnText.style.display='inline';
+});
+</script>
+
+</body>
+</html>
