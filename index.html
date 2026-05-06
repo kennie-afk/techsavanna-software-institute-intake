@@ -10,24 +10,21 @@
 
 <style>
 :root{
-  --primary:#7c3aed; 
-  --secondary:#4f46e5; 
-  --success:#22c55e; 
+  --primary:#7c3aed;
+  --secondary:#4f46e5;
+  --success:#22c55e;
   --danger:#ef4444;
   --border:rgba(0,0,0,0.12);
-  --tsi-purple:#7c3aed; 
+  --tsi-purple:#7c3aed;
   --tsi-gold:#ffd700;
 }
-
 *{box-sizing:border-box;}
-
 body{
   margin:0;
   font-family:'Plus Jakarta Sans',sans-serif;
   background:white;
   padding:40px 15px;
 }
-
 .container{
   max-width:700px;
   margin:auto;
@@ -38,18 +35,15 @@ body{
   box-shadow:0 30px 70px rgba(0,0,0,0.6);
   background: white;
 }
-
 h1{
   font-size:2.6rem;
   text-align:center;
   font-weight:800;
   margin-bottom:10px;
 }
-
 .tsi-title-main{color:var(--tsi-purple);}
 .tsi-title-sub{color:var(--tsi-gold);}
 .tsi-title-end{color:var(--danger);}
-
 .description{
   text-align:center;
   margin-bottom:40px;
@@ -57,9 +51,7 @@ h1{
   padding-bottom:20px;
   color:#333;
 }
-
 section{margin-bottom:40px;}
-
 h3{
   font-size:0.85rem;
   text-transform:uppercase;
@@ -67,9 +59,7 @@ h3{
   color:var(--primary);
   margin-bottom:20px;
 }
-
 .form-group{margin-bottom:20px;}
-
 label{
   display:flex;
   align-items:center;
@@ -79,7 +69,6 @@ label{
   font-weight:600;
   color:#1f2937;
 }
-
 input,select,textarea{
   width:100%;
   padding:15px;
@@ -89,18 +78,15 @@ input,select,textarea{
   color:white;
   font-size:1rem;
 }
-
 input:focus,select:focus,textarea:focus{
   outline:none;
   border-color:var(--primary);
 }
-
 .error-message{
   font-size:0.75rem;
   color:var(--danger);
   margin-top:5px;
 }
-
 button{
   width:100%;
   padding:18px;
@@ -112,7 +98,6 @@ button{
   cursor:pointer;
   font-size:1.05rem;
 }
-
 .loader{
   display:none;
   border:3px solid #fff;
@@ -123,107 +108,80 @@ button{
   margin:auto;
   animation:spin 1s linear infinite;
 }
-
 @keyframes spin{100%{transform:rotate(360deg);}}
-
-#success{
-  display:none;
-  text-align:center;
-  padding:20px 0;
-}
-
-/* Premium Success Screen */
-.success-icon-container {
-  margin-bottom: 25px;
-}
-
+#success{display:none; text-align:center; padding:20px 0;}
+.success-icon-container { margin-bottom: 25px; }
 .info-box {
-  margin-top: 30px; 
-  padding: 25px; 
+  margin-top: 30px;
+  padding: 25px;
   border-radius: 16px;
-  background: #f8fafc; 
-  border: 1px solid #e2e8f0; 
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   text-align: left;
 }
-
-.info-row { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px; 
-  margin-bottom: 14px; 
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
   color: #475569;
-  font-size: 1rem;
 }
-
-.info-row i {
-  width: 22px;
-  height: 22px;
-}
+.info-row i { width: 22px; height: 22px; }
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
 <div id="formBody">
-
 <h1>
-  <span class="tsi-title-main">Techsavanna</span> 
-  <span class="tsi-title-sub">Software</span> 
+  <span class="tsi-title-main">Techsavanna</span>
+  <span class="tsi-title-sub">Software</span>
   <span class="tsi-title-end">Institute</span>
 </h1>
-
 <p class="description">Complete the admission form below.</p>
 
 <form id="mainForm">
 
 <section>
 <h3>Student Information</h3>
-
 <div class="form-group">
 <label><i data-lucide="user"></i> Full Name</label>
-<input type="text" name="name">
+<input type="text" name="name" required>
 <span class="error-message" id="nameError"></span>
 </div>
-
 <div class="form-group">
 <label><i data-lucide="credit-card"></i> ID / Passport</label>
-<input type="text" name="id">
+<input type="text" name="id" required>
 <span class="error-message" id="idError"></span>
 </div>
-
 <div class="form-group">
 <label><i data-lucide="users"></i> Gender</label>
-<select name="gender">
+<select name="gender" required>
 <option value="">Select</option>
 <option>Male</option>
 <option>Female</option>
 </select>
 <span class="error-message" id="genderError"></span>
 </div>
-
 <div class="form-group">
 <label><i data-lucide="calendar"></i> Date of Birth</label>
-<input type="date" name="dob">
+<input type="date" name="dob" required>
 <span class="error-message" id="dobError"></span>
 </div>
-
 <div class="form-group">
 <label><i data-lucide="phone"></i> Phone</label>
-<input type="text" name="phone">
+<input type="text" name="phone" required>
 <span class="error-message" id="phoneError"></span>
 </div>
-
 <div class="form-group">
 <label><i data-lucide="mail"></i> Email</label>
-<input type="email" name="email">
+<input type="email" name="email" required>
 <span class="error-message" id="emailError"></span>
 </div>
-
 <div class="form-group">
 <label><i data-lucide="activity"></i> Status</label>
-<select name="q2" id="employmentStatus">
+<select name="q2" id="employmentStatus" required>
 <option value="">Select Status</option>
 <option value="Student">Student</option>
 <option value="Employed">Working</option>
@@ -237,28 +195,50 @@ button{
 <h3>Program Details</h3>
 
 <div class="form-group">
-<label><i data-lucide="book-open"></i> Program</label>
-<select name="program">
-<option value="">Select Program</option>
-<option>Software Engineering</option>
-<option>Software Development</option>
-<option>Web Development</option>
-<option>Cybersecurity</option>
-<option>Data Science</option>
-<option>Artificial Intelligence</option>
-<option>Machine Learning</option>
-<option>UI/UX Design</option>
+<label><i data-lucide="award"></i> Program Type</label>
+<select name="programType" id="programType" required>
+  <option value="">Select Program Type</option>
+  <option value="Diploma">Diploma Program</option>
+  <option value="Certificate">Certificate Program</option>
 </select>
-<span class="error-message" id="programError"></span>
+<span class="error-message" id="programTypeError"></span>
+</div>
+
+<div class="form-group" id="diplomaGroup" style="display:none;">
+<label><i data-lucide="book-open"></i> Diploma Program</label>
+<select name="program" id="diplomaProgram">
+  <option value="">Select Diploma Program</option>
+  <option>Diploma in Cybersecurity & Ethical Hacking</option>
+  <option>Diploma in Digital Marketing (AI)</option>
+  <option>Diploma in Artificial Intelligence</option>
+  <option>Diploma in Information Technology</option>
+  <option>Diploma in Software Development</option>
+</select>
+</div>
+
+<div class="form-group" id="certificateGroup" style="display:none;">
+<label><i data-lucide="book-open"></i> Certificate Program</label>
+<select name="program" id="certificateProgram">
+  <option value="">Select Certificate Program</option>
+  <option>Certificate Data Science</option>
+  <option>Advanced Certificate Data Science</option>
+  <option>Software Development</option>
+  <option>Network & Cyber security</option>
+  <option>Software Engineering</option>
+  <option>Cloud & Infrastructure Engineering</option>
+  <option>Operating Systems & Administration</option>
+  <option>Website Design & Development</option>
+  <option>Matlab</option>
+  <option>Autocad</option>
+  <option>Digital Marketing</option>
+  <option>Computer Packages</option>
+</select>
 </div>
 
 <div class="form-group">
   <label><i data-lucide="layers"></i> Intake</label>
-  <select name="intake">
+  <select name="intake" id="intakeSelect" required>
     <option value="">Select Intake</option>
-    <option value="May Intake">May Intake</option>
-    <option value="August Intake">August Intake</option>
-    <option value="November Intake">November Intake</option>
   </select>
   <span class="error-message" id="intakeError"></span>
 </div>
@@ -266,27 +246,22 @@ button{
 
 <section id="workSection" style="display:none;">
 <h3>Work & Contact</h3>
-
 <div class="form-group">
 <label><i data-lucide="briefcase"></i> Place of Work</label>
 <input type="text" name="work">
 </div>
-
 <div class="form-group">
 <label><i data-lucide="badge"></i> Title</label>
 <input type="text" name="title">
 </div>
-
 <div class="form-group">
 <label><i data-lucide="user-plus"></i> Contact Person</label>
 <input type="text" name="contact-name">
 </div>
-
 <div class="form-group">
 <label><i data-lucide="phone-call"></i> Contact Phone</label>
 <input type="text" name="contact-phone">
 </div>
-
 <div class="form-group">
 <label><i data-lucide="mail"></i> Contact Email</label>
 <input type="email" name="contact-email">
@@ -295,37 +270,34 @@ button{
 
 <section>
 <h3>Additional Info</h3>
-
 <div class="form-group">
 <label><i data-lucide="file-text"></i> Profession & Experience</label>
-<textarea name="q1"></textarea>
+<textarea name="q1" rows="3"></textarea>
 </div>
-
 <div class="form-group">
-<label><i data-lucide="search"></i> Referral Source</label>
-<select name="q3">
-<option value="">Select</option>
-<option>Website</option>
-<option>Google</option>
-<option>Referral</option>
+<label><i data-lucide="search"></i> How did you get to know of the training?</label>
+<select name="q3" required>
+  <option value="">Select Source</option>
+  <option>Referral</option>
+  <option>Techsavanna Website</option>
+  <option>Google Search</option>
+  <option>Online Advert</option>
+  <option>Facebook</option>
+  <option>Walk-in</option>
 </select>
 </div>
-
 <div class="form-group">
-<label><i data-lucide="trending-up"></i> Career Support</label>
-<textarea name="q4"></textarea>
+<label><i data-lucide="trending-up"></i> How else would you like us to support you in your career?</label>
+<textarea name="q4" rows="3"></textarea>
 </div>
-
 <div class="form-group">
-<label><i data-lucide="target"></i> Future Training</label>
-<textarea name="q5"></textarea>
+<label><i data-lucide="target"></i> Which other area would you like us to train you on in future?</label>
+<textarea name="q5" rows="3"></textarea>
 </div>
-
 <div class="form-group">
-<label><i data-lucide="message-circle"></i> Comments</label>
-<textarea name="q6"></textarea>
+<label><i data-lucide="message-circle"></i> Any other comment</label>
+<textarea name="q6" rows="3"></textarea>
 </div>
-
 </section>
 
 <button type="submit">
@@ -334,10 +306,9 @@ button{
 </button>
 
 </form>
-
 </div>
 
-<!-- Premium Success Screen -->
+<!-- Success Screen -->
 <div id="success">
   <div class="success-icon-container">
     <i data-lucide="check-circle" style="color: var(--success); width: 80px; height: 80px; stroke-width: 1.5;"></i>
@@ -362,56 +333,108 @@ const loader = document.getElementById('loader');
 const btnText = document.getElementById('btnText');
 const employmentSelect = document.getElementById("employmentStatus");
 const workSection = document.getElementById("workSection");
+const programTypeSelect = document.getElementById("programType");
+const diplomaGroup = document.getElementById("diplomaGroup");
+const certificateGroup = document.getElementById("certificateGroup");
+const diplomaProgram = document.getElementById("diplomaProgram");
+const certificateProgram = document.getElementById("certificateProgram");
+const intakeSelect = document.getElementById("intakeSelect");
 
-employmentSelect.addEventListener("change", function(){
-  if(this.value === "Employed"){
-    workSection.style.display = "block";
-  } else {
-    workSection.style.display = "none";
-  }
+// Toggle Program Groups
+programTypeSelect.addEventListener("change", function() {
+  const type = this.value;
+  
+  diplomaGroup.style.display = type === "Diploma" ? "block" : "none";
+  certificateGroup.style.display = type === "Certificate" ? "block" : "none";
+
+  // Reset program selections
+  diplomaProgram.value = "";
+  certificateProgram.value = "";
+
+  // Update Intake Options
+  updateIntakeOptions(type);
 });
 
+function updateIntakeOptions(type) {
+  intakeSelect.innerHTML = '<option value="">Select Intake</option>';
+  
+  if (type === "Diploma") {
+    intakeSelect.innerHTML += '<option value="May Intake">May Intake</option>';
+  } else if (type === "Certificate") {
+    intakeSelect.innerHTML += `
+      <option value="May Intake">May Intake</option>
+      <option value="August Intake">August Intake</option>
+      <option value="November Intake">November Intake</option>
+    `;
+  }
+}
+
+// Employment toggle
+employmentSelect.addEventListener("change", () => {
+  workSection.style.display = employmentSelect.value === "Employed" ? "block" : "none";
+});
+
+// Form Submission
 form.addEventListener('submit', async function(e){
   e.preventDefault();
-
-  let valid = true;
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
-  const required = ["name","id","gender","dob","phone","email","program","intake","q2"];
-  required.forEach(field => {
-    if(!form[field].value){
+  let valid = true;
+  let firstErrorField = null;
+
+  const required = ["name","id","gender","dob","phone","email","programType","intake","q2","q3"];
+  
+  for (let field of required) {
+    const input = form[field];
+    if (!input || !input.value.trim()) {
       const errorEl = document.getElementById(field + "Error");
-      if(errorEl) errorEl.textContent = "Required";
+      if (errorEl) errorEl.textContent = "This field is required";
+      if (!firstErrorField) firstErrorField = input;
       valid = false;
     }
-  });
+  }
 
-  if(!valid) return;
+  // Check selected program
+  const selectedProgram = diplomaProgram.value || certificateProgram.value;
+  if (!selectedProgram) {
+    const errorEl = document.getElementById("programTypeError");
+    if (errorEl) errorEl.textContent = "Please select a program";
+    if (!firstErrorField) firstErrorField = programTypeSelect;
+    valid = false;
+  }
+
+  if (!valid) {
+    if (firstErrorField) {
+      firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
+      firstErrorField.focus();
+    }
+    return;
+  }
 
   loader.style.display = 'inline-block';
   btnText.style.display = 'none';
 
-  try{
-    const res = await fetch("https://script.google.com/macros/s/AKfycby5U6tiITPTrl4L6Uc9FrcKmF4__Kc6qI5w699AF0YbFbw8BGyxtV-2dZzxeQh-3H6LcQ/exec",{
-      method:"POST",
-      body:new URLSearchParams(new FormData(form))
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbzrZQLOPagJDGbWXb9_8qKMLrEw-47LxedAhTYBU-XRMyG0w2BzM_CTkYtC0BmF8DBoAQ/exec", {
+      method: "POST",
+      body: new URLSearchParams(new FormData(form))
     });
 
-    const text = await res.text();
+    const result = await res.json();
 
-    if(text.includes("success")){
-      document.getElementById('formBody').style.display='none';
-      document.getElementById('success').style.display='block';
+    if(result.status === "success"){
+      document.getElementById('formBody').style.display = 'none';
+      document.getElementById('success').style.display = 'block';
       lucide.createIcons();
     } else {
-      alert("Submission error");
+      alert("Submission failed. Please try again.");
     }
-  } catch(e){
-    alert("Network error");
+  } catch(e) {
+    alert("Network error. Please check your connection and try again.");
   }
 
-  loader.style.display='none';
-  btnText.style.display='inline';
+  loader.style.display = 'none';
+  btnText.style.display = 'inline';
 });
 </script>
 
