@@ -237,9 +237,7 @@ button{
 
 <div class="form-group">
   <label><i data-lucide="layers"></i> Intake</label>
-  <select name="intake" id="intakeSelect" required>
-    <option value="">Select Intake</option>
-  </select>
+  <input type="text" name="intake" id="intakeSelect" readonly placeholder="Auto-generated intake">
   <span class="error-message" id="intakeError"></span>
 </div>
 </section>
@@ -340,41 +338,35 @@ const diplomaProgram = document.getElementById("diplomaProgram");
 const certificateProgram = document.getElementById("certificateProgram");
 const intakeSelect = document.getElementById("intakeSelect");
 
-// Toggle Program Groups
 programTypeSelect.addEventListener("change", function() {
   const type = this.value;
   
   diplomaGroup.style.display = type === "Diploma" ? "block" : "none";
   certificateGroup.style.display = type === "Certificate" ? "block" : "none";
 
-  // Reset program selections
   diplomaProgram.value = "";
   certificateProgram.value = "";
 
-  // Update Intake Options
   updateIntakeOptions(type);
 });
 
 function updateIntakeOptions(type) {
-  intakeSelect.innerHTML = '<option value="">Select Intake</option>';
-  
   if (type === "Diploma") {
-    intakeSelect.innerHTML += '<option value="May Intake">May Intake</option>';
-  } else if (type === "Certificate") {
-    intakeSelect.innerHTML += `
-      <option value="May Intake">May Intake</option>
-      <option value="August Intake">August Intake</option>
-      <option value="November Intake">November Intake</option>
-    `;
+    intakeSelect.value = "May Intake";
+  } 
+  else if (type === "Certificate") {
+    const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+    intakeSelect.value = currentMonth + " Intake";
+  } 
+  else {
+    intakeSelect.value = "";
   }
 }
 
-// Employment toggle
 employmentSelect.addEventListener("change", () => {
   workSection.style.display = employmentSelect.value === "Employed" ? "block" : "none";
 });
 
-// Form Submission
 form.addEventListener('submit', async function(e){
   e.preventDefault();
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
@@ -394,7 +386,6 @@ form.addEventListener('submit', async function(e){
     }
   }
 
-  // Check selected program
   const selectedProgram = diplomaProgram.value || certificateProgram.value;
   if (!selectedProgram) {
     const errorEl = document.getElementById("programTypeError");
