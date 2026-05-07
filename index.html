@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
-:root{--primary:#2563eb;--secondary:#1e40af;--success:#22c55e;--danger:#ef4444;--border:rgba(0,0,0,0.12);--tsi-purple:#2563eb;--tsi-gold:#ffd700;}
+:root{--primary:#7c3aed;--secondary:#4f46e5;--success:#22c55e;--danger:#ef4444;--border:rgba(0,0,0,0.12);--tsi-purple:#7c3aed;--tsi-gold:#ffd700;}
 *{box-sizing:border-box;}
 body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;background:white;padding:40px 15px;}
 .container{max-width:700px;margin:auto;padding:50px;border-radius:28px;backdrop-filter:blur(25px);border:1px solid var(--border);box-shadow:0 30px 70px rgba(0,0,0,0.6);background:white;}
@@ -32,31 +32,15 @@ button{width:100%;padding:18px;border:none;border-radius:16px;font-weight:700;ba
 .info-box{margin-top:30px;padding:25px;border-radius:16px;background:#f8fafc;border:1px solid #e2e8f0;text-align:left;}
 .info-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;color:#475569;}
 .info-row i{width:22px;height:22px;}
-
-.logo-container {
-  text-align: center;
-  margin-bottom: 25px;
-}
-.logo-container img {
-  max-width: 320px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
 </style>
 </head>
 <body>
 
 <div class="container">
 <div id="formBody">
+<h1><span class="tsi-title-main">Techsavanna</span> <span class="tsi-title-sub">Software</span> <span class="tsi-title-end">Institute</span></h1>
+<p class="description">Complete the admission form below.</p>
 
-  <div class="logo-container">
-    <img src="tsi.png" 
-         alt="Techsavanna Software Institute" 
-         onerror="this.src='https://via.placeholder.com/320x100/2563eb/ffffff?text=TSI+LOGO';">
-  </div>
-
-<p class="description"><strong>Complete the admission form below.</strong></p>
 <form id="mainForm">
 <input type="hidden" name="program" id="finalProgram">
 
