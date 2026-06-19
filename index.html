@@ -129,6 +129,7 @@ button{width:100%;padding:18px;border:none;border-radius:16px;font-weight:700;ba
 <option value="">Select Program Type</option>
 <option value="Diploma">Diploma Program</option>
 <option value="Certificate">Certificate Program</option>
+<option value="AI Course">AI Course</option>
 </select>
 <span class="error-message" id="programTypeError"></span>
 </div>
@@ -161,6 +162,43 @@ button{width:100%;padding:18px;border:none;border-radius:16px;font-weight:700;ba
 <option>Autocad</option>
 <option>Digital Marketing</option>
 <option>Computer Packages</option>
+</select>
+</div>
+
+<div class="form-group" id="aiCourseGroup" style="display:none;">
+<label><i data-lucide="bot"></i> AI Course</label>
+<select id="aiCourseSelect">
+<option value="">Select AI Course</option>
+<option>AI + Sales</option>
+<option>AI + Marketing</option>
+<option>AI + Researcher</option>
+<option>AI + Human Resource 1</option>
+<option>AI + Legal</option>
+<option>AI + Ethics</option>
+<option>AI + Real Estate</option>
+<option>AI + Chief AI Officer</option>
+<option>AI + Legal Agent</option>
+<option>AI + Finance Agent</option>
+<option>AI + Writer</option>
+<option>AI + Supply Chain</option>
+<option>AI + Finance</option>
+<option>AI + Customer Service</option>
+<option>AI + UX Designer</option>
+<option>AI + Design</option>
+<option>AI + Game Design Agent</option>
+<option>AI + Gaming</option>
+<option>AI + Data</option>
+<option>AI + Robotics</option>
+<option>AI + Quantum</option>
+<option>AI + Quality Assurance</option>
+<option>AI + Business Intelligence</option>
+<option>AI + Data Agent</option>
+<option>AI + Developer</option>
+<option>AI + Engineer</option>
+<option>AI + Prompt Engineer Level 2</option>
+<option>AI + Telecommunications</option>
+<option>AI + Ethical Hacker</option>
+<option>AI + Network</option>
 </select>
 </div>
 
@@ -269,8 +307,10 @@ const workSection = document.getElementById("workSection");
 const programTypeSelect = document.getElementById("programType");
 const diplomaGroup = document.getElementById("diplomaGroup");
 const certificateGroup = document.getElementById("certificateGroup");
+const aiCourseGroup = document.getElementById("aiCourseGroup");
 const diplomaProgram = document.getElementById("diplomaProgram");
 const certificateProgram = document.getElementById("certificateProgram");
+const aiCourseSelect = document.getElementById("aiCourseSelect");
 const intakeSelect = document.getElementById("intakeSelect");
 const finalProgram = document.getElementById("finalProgram");
 
@@ -278,14 +318,19 @@ programTypeSelect.addEventListener("change", function() {
   const type = this.value;
   diplomaGroup.style.display = type === "Diploma" ? "block" : "none";
   certificateGroup.style.display = type === "Certificate" ? "block" : "none";
-  diplomaProgram.value = "";
-  certificateProgram.value = "";
+  aiCourseGroup.style.display = type === "AI Course" ? "block" : "none";
+  if (type !== "Diploma") diplomaProgram.value = "";
+  if (type !== "Certificate") certificateProgram.value = "";
+  if (type !== "AI Course") aiCourseSelect.value = "";
 
   if (type === "Diploma") {
     intakeSelect.value = "May Intake";
   } else if (type === "Certificate") {
     const month = new Date().toLocaleString('default', { month: 'long' });
     intakeSelect.value = month + " Intake";
+  } else if (type === "AI Course") {
+    const month = new Date().toLocaleString('default', { month: 'long' });
+    intakeSelect.value = "AI " + month + " Intake";
   } else {
     intakeSelect.value = "";
   }
@@ -297,7 +342,12 @@ employmentSelect.addEventListener("change", () => {
 
 form.addEventListener('submit', async function(e){
   e.preventDefault();
-  finalProgram.value = diplomaProgram.value || certificateProgram.value;
+  const type = programTypeSelect.value;
+  let selected = "";
+  if (type === "Diploma") selected = diplomaProgram.value;
+  else if (type === "Certificate") selected = certificateProgram.value;
+  else if (type === "AI Course") selected = aiCourseSelect.value;
+  finalProgram.value = selected;
 
   document.querySelectorAll('.error-message').forEach(span => span.textContent = '');
 
@@ -315,9 +365,8 @@ form.addEventListener('submit', async function(e){
     }
   }
 
-  const selectedProgram = diplomaProgram.value || certificateProgram.value;
-  if (!selectedProgram) {
-    const errorEl = document.getElementById("programTypeError");
+  if (!selected) {
+    let errorEl = document.getElementById("programTypeError");
     if (errorEl) errorEl.textContent = "Please select a program";
     if (!firstErrorField) firstErrorField = programTypeSelect;
     valid = false;
